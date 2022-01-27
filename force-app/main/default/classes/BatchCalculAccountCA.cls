@@ -1,4 +1,4 @@
-global class BatchCalculateAccountCA implements Database.Batchable<sObject>{
+global class BatchCalculAccountCA implements Database.Batchable<sObject>{
     
     global Database.QueryLocator start(Database.BatchableContext info){ 
         //Requeter seulement les comptes qui ont au moins une commande avec le Status 'Ordered'
