@@ -1,7 +1,10 @@
-<apex:page controller="VFC01_Team" >
-    <div>
-        <h1>
-            Sum of my team orders: <apex:outputText value="{!SumOrders}" />
-        </h1>
-    </div>
+<apex:page controller="SumTotalAmountOrders" lightningStylesheets="true">
+    <apex:pageBlock >
+
+        <apex:pageBlockSection title="Sum of my team orders :">
+            <apex:outputText value=" {!SumOrders} €"/>
+        </apex:pageBlockSection>   
+
+    </apex:pageBlock>
+    
 </apex:page>
