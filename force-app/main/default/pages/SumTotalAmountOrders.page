@@ -1,0 +1,5 @@
+<apex:page controller="HandlerOrders" lightningStylesheets="true">
+    <apex:pageBlock title="Total amount of orders placed" >
+        <apex:outputText value=" {!SumOrdersStatusOrdered} €"/>
+    </apex:pageBlock>
+</apex:page>
