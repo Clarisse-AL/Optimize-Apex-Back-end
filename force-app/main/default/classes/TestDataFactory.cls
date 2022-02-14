@@ -37,7 +37,21 @@ public class TestDataFactory {
         Insert pbe;
         Return pbe;
     }
-       
+      
+    // Create an order with draft status, associated to an account
+    public static Order createOrder(Id accountId, boolean doInsert) {
+        Order newOrder    = new Order(
+            AccountId     = accountId,
+            Pricebook2Id  = Test.getStandardPricebookId(),
+            status        = 'draft',
+            effectiveDate = Date.today()
+        );
+        if(doInsert) {
+            insert newOrder;
+        }
+        return newOrder;
+    }
+
     // Create several orders with ordered status on one account
     // TotalAmount of each orders is equal to 100
     public static List<Order> createOrdersOnAccount(Integer numberOfOrders, Id accountId){
