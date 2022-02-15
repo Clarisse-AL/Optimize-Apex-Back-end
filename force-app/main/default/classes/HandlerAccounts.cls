@@ -8,19 +8,21 @@ public class HandlerAccounts {
         // set the Id for each order
         Set<ID> setAccountIDs = new Set<ID>();
         for(Order orders : order){
-            setAccountIDs.add(orders.AccountId);
+            if (orders.AccountId != null) {
+                setAccountIds.add(orders.AccountId);
+            }
         }
         
         // nested query pour to get orders 'ordered' for each account
         List<Account> accounts = [SELECT Id, Chiffre_d_affaire__c, 
-                                  (SELECT Id, AccountId FROM Orders WHERE Status = 'Ordered') 
+                                  (SELECT Id, AccountId,TotalAmount, NetAmount__c FROM Orders WHERE Status = 'Ordered') 
                                   FROM Account WHERE Id IN : setAccountIds];
         
         //For each account with an order 'ordered', set order.netAmount to account.Chiffre_d_affaire__c
         for(Account listAcctsToUpdate : accounts){
             Decimal accountCA = 0;
             
-            for(Order orders : order) {
+            for(Order orders : listAcctsToUpdate.orders) {
                 accountCA += orders.NetAmount__c;
             }
             listAcctsToUpdate.Chiffre_d_affaire__c = accountCA;

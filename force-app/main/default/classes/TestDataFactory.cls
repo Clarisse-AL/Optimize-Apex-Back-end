@@ -44,7 +44,9 @@ public class TestDataFactory {
             AccountId     = accountId,
             Pricebook2Id  = Test.getStandardPricebookId(),
             status        = 'draft',
-            effectiveDate = Date.today()
+            effectiveDate = Date.today(),
+            NetAmount__c = 300,
+            ShipmentCost__c = 40
         );
         if(doInsert) {
             insert newOrder;
@@ -62,7 +64,9 @@ public class TestDataFactory {
                 AccountId = accountId,
                 Pricebook2Id = Test.getStandardPricebookId(),
                 status = 'draft',
-                effectiveDate = Date.today()
+                effectiveDate = Date.today(),
+                NetAmount__c = 300,
+                ShipmentCost__c = 40
             );
             newOrders.add(newOrder);
         }
