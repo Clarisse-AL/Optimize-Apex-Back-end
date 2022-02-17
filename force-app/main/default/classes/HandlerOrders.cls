@@ -1,22 +1,20 @@
-public class HandlerOrders {
-    
-    public static void CalculNetAmount(List <Order> order) {
-        // for each order calcul NetAmount
-        for (Order orders : order){
-            if ( orders.ShipmentCost__c != null){
-                orders.NetAmount__c = orders.TotalAmount - orders.ShipmentCost__c;
-            } else { 
-                orders.NetAmount__c = orders.TotalAmount;
-            }
-        }
-    }
+/**
+* This class returns a summary of the data from the Order Object
+* It is ordered by the owner i.e. the sales rep.   
+*/
 
-    public decimal SumOrdersStatusOrdered{
-        //sum of orders with status ordered
-        get{
-			AggregateResult groupedResults = [SELECT SUM(TotalAmount) total FROM Order WHERE Status = 'Ordered'];
-			return (decimal)groupedResults.get('total');
-        }
-        set;
+public with sharing class HandlerOrders {
+
+    public List<AggregateResult> aggregateResultList {get; set;}
+   
+    public myTeamOrdersController() {
+   
+        aggregateResultList = new List <aggregateResult>();
+        aggregateResultList = [SELECT COUNT(id) ordCount, 
+                                      SUM(TotalAmount) ordAmount, 
+                                      owner.Name ordName 
+                                      FROM Order 
+                                      WHERE Status = 'Ordered' 
+                                      GROUP BY owner.Name];
     }
-}
+   }
