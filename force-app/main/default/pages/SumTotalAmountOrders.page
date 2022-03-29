@@ -1,5 +1,12 @@
-<apex:page controller="HandlerOrders" lightningStylesheets="true">
-    <apex:pageBlock title="Total amount of orders placed" >
-        <apex:outputText value=" {!SumOrdersStatusOrdered} €"/>
+<apex:page controller="ControllerTeamsOrder" lightningStylesheets="true">
+    
+    <apex:pageBlock title="Orders placed" >
+        <apex:outputText value=" {!SumOrdersOrdered} €"/>
     </apex:pageBlock>
+    
+    <apex:pageBlock title="Draft orders" >
+        <apex:outputText value=" {!SumOrdersDraft} €"/>
+    </apex:pageBlock>
+
+
 </apex:page>
