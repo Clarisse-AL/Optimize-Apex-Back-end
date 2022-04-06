@@ -2,11 +2,12 @@ public with sharing class HelperTriggerUpdateCA {
    
 
     // Update Chiffre d'affaire on each account with an order with status ordered
-    public static void UpdateCa(List <Order> order) {
+    public static void UpdateCa(List<Account> accounts) {
 
         
         // set the Id for each order
         Set<ID> setAccountIDs = new Set<ID>();
+        List <Order> order = new List<Order>();
         for(Order orders : order){
             if (orders.AccountId != null) {
                 setAccountIds.add(orders.AccountId);
@@ -14,7 +15,7 @@ public with sharing class HelperTriggerUpdateCA {
         }
         
         // nested query pour to get orders 'ordered' for each account
-        List<Account> accounts = [SELECT Id, Chiffre_d_affaire__c, 
+        accounts = [SELECT Id, Chiffre_d_affaire__c, 
                                   (SELECT Id, AccountId,TotalAmount, NetAmount__c FROM Orders WHERE Status = 'Ordered') 
                                   FROM Account WHERE Id IN : setAccountIds];
         

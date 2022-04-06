@@ -1,6 +1,6 @@
 trigger TriggerUpdateCA on Account (after update) {
 
-    List<Order> Order = new List<Order>();
+    List<Order> order = new List<Order>();
     HelperTriggerUpdateCA.UpdateCa(order);
 
 }

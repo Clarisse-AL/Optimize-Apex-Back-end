@@ -1,18 +1,15 @@
 global class BatchUpdateAccountCA implements Database.Batchable<sObject>{
 
    global Database.QueryLocator start(Database.BatchableContext info){ 
-       //Requeter seulement les comptes qui ont au moins une commande avec le Status 'Ordered'
-       return Database.getQueryLocator([SELECT Id FROM Account]);
+       return Database.getQueryLocator([SELECT Id, Chiffre_d_affaire__c, 
+       (SELECT NetAmount__c FROM Orders WHERE Status = 'Ordered') 
+       FROM Account]);
 
    }
     
-   global void execute(Database.BatchableContext info, List<Account> scope){      
-              
-		for(Account acct : scope){
-			HandlerAccounts.UpdateCa(order);
-       }
-       
-       update scope;
+   global void execute(Database.BatchableContext info, List<Account> account){      
+        
+    HelperTriggerUpdateCA.UpdateCa(account);
    }    
     
    global void finish(Database.BatchableContext info){     

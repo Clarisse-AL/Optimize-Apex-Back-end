@@ -55,7 +55,7 @@ public static Account createOrdersForOneAccount(Integer num){
 }
 
     //creates a new user
-    public static User createUser(String name){
+public static User createUser(String name){
     Profile profileId = [SELECT Id 
                          FROM Profile 
                          WHERE Name = 'Standard User'
@@ -76,7 +76,7 @@ public static Account createOrdersForOneAccount(Integer num){
 }
     
     // Create a priceBookEntry
-    public static PriceBookEntry createPriceBookEntry() {
+public static PriceBookEntry createPriceBookEntry() {
         Product2 product = new Product2(Name = 'Chemise Verte longue XYX', Family = 'Chemise');
         Insert product;
         
@@ -91,7 +91,7 @@ public static Account createOrdersForOneAccount(Integer num){
     }
     
     // Create an order with draft status, associated to an account
-    public static Order createOrder(Id accountId, boolean doInsert) {
+public static Order createOrder(Id accountId, boolean doInsert) {
         Order newOrder    = new Order(
             AccountId     = accountId,
             Pricebook2Id  = Test.getStandardPricebookId(),
@@ -106,7 +106,7 @@ public static Account createOrdersForOneAccount(Integer num){
     
     // Create several orders with ordered status on one account
     // TotalAmount of each orders is equal to 100
-    public static List<Order> createOrdersOnAccount(Integer numberOfOrders, Id accountId){
+public static List<Order> createOrdersOnAccount(Integer numberOfOrders, Id accountId){
         // First insert draft orders
         List<Order> newOrders = new List<Order>();
         for(Integer i=0; i<numberOfOrders; i++) {
@@ -135,9 +135,10 @@ public static Account createOrdersForOneAccount(Integer num){
         update newOrders;
         return newOrders;
     }
+
     
     // Create an ordered order with multiple products
-    public static List<Order> createMultipleProductsOrders(Id accountId, Integer numOrders, Integer numProducts){
+public static List<Order> createMultipleProductsOrders(Id accountId, Integer numOrders, Integer numProducts){
         List<Order> newOrders = new List<Order>();
         for(Integer i=0; i<numOrders; i++) {
             Order newOrder = TestDataFactory.createOrder(accountId, false);
