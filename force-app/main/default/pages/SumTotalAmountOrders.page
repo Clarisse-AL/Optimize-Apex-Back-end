@@ -4,9 +4,4 @@
         <apex:outputText value=" {!SumOrdersOrdered} €"/>
     </apex:pageBlock>
     
-    <apex:pageBlock title="Draft orders" >
-        <apex:outputText value=" {!SumOrdersDraft} €"/>
-    </apex:pageBlock>
-
-
 </apex:page>
