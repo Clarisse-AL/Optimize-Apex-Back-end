@@ -9,6 +9,8 @@ public with sharing class ControllerTeamsOrderTest {
             accs.add(acc);
         }
         insert accs;
+
+        TestDataFactory.createUser();
     }
 
     @isTest
@@ -19,19 +21,23 @@ public with sharing class ControllerTeamsOrderTest {
 
             // create an order with TotalAmount equals to 100
             List<Order> orders = TestDataFactory.createOrdersOnAccount(1, acct.Id);
+            orders = [SELECT Id, TotalAmount, NetAmount__c, ShipmentCost__c FROM Order WHERE Status = 'Draft'];
             update acct;
 
-            // Test query
+            // Test methods
             Test.startTest();
             for(Order order : orders) {
                 order.Status = 'Ordered'; }
             update orders;
-
-            AggregateResult ar =   [SELECT SUM(TotalAmount)total FROM Order WHERE Status = 'ordered' AND Account.Id =: acct.Id GROUP BY Account.OwnerId ];
+            ControllerTeamsOrder orderPage = new ControllerTeamsOrder();
             Test.stopTest();
 
             // Total amount should equals to 100
-            System.assertEquals(acct.Chiffre_d_affaire__c,ar.get('total'));
+            System.assertEquals(100, orderPage.SumOrdersOrdered);
+            
+           
+
+
 
     }
  
