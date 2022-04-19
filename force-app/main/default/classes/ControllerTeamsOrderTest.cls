@@ -10,7 +10,6 @@ public with sharing class ControllerTeamsOrderTest {
         }
         insert accs;
 
-        TestDataFactory.createUser();
     }
 
     @isTest

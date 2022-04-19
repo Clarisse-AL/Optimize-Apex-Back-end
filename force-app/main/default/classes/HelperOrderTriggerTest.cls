@@ -27,9 +27,9 @@ public with sharing class HelperOrderTriggerTest {
             update orders;
         Test.stopTest();
         
-        // Acc CA should be equal to 100
+        // Acc CA should be equal to 90
         Account acctTestAfterUpdate = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Name = 'AccountTest 1'];
-        System.assertEquals(100, acctTestAfterUpdate.Chiffre_d_affaire__c, 'Value incorrect : Chiffre d\'affaire should be equal to TotalAmount' );
+        System.assertEquals(90, acctTestAfterUpdate.Chiffre_d_affaire__c, 'Value incorrect : Chiffre d\'affaire should be equal to TotalAmount' );
         
     }
 
@@ -47,9 +47,9 @@ public with sharing class HelperOrderTriggerTest {
             update orders;
         Test.stopTest();
         
-        // Acc CA should be equal to 10100
+        // Acc CA should be equal to 9090
         Account acctTestAfterUpdate = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Name = 'AccountTest 1'];
-        System.assertEquals(10100, acctTestAfterUpdate.Chiffre_d_affaire__c, 'Value incorrect : Chiffre d\'affaire should be equal to TotalAmount' );
+        System.assertEquals(9090, acctTestAfterUpdate.Chiffre_d_affaire__c, 'Value incorrect : Chiffre d\'affaire should be equal to TotalAmount' );
         
     }
 
