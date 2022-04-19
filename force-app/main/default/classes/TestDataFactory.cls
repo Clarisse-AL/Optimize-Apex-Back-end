@@ -2,7 +2,6 @@
 
 public class TestDataFactory {
 
-   
     // Create a priceBookEntry
     public static PriceBookEntry createPriceBookEntry() {
         Product2 product = new Product2(Name = 'Chemise Verte longue XYX', Family = 'Chemise');
