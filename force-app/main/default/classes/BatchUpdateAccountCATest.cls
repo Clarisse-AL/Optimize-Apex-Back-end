@@ -29,9 +29,9 @@ public with sharing class BatchUpdateAccountCATest {
             Id batchId = Database.executeBatch(batchUpdateAccountCA);
         Test.stopTest();
         
-        // Acc CA should be equal to 90
+        // Acc CA should be equal to 100
         Account acctTestAfterUpdate = [SELECT Id, Chiffre_d_affaire__c FROM Account WHERE Name = 'AccountTest 1'];
-        System.assertEquals(90, acctTestAfterUpdate.Chiffre_d_affaire__c, 'Value incorrect : Chiffre d\'affaire should be equal to TotalAmount' );
+        System.assertEquals(100, acctTestAfterUpdate.Chiffre_d_affaire__c, 'Value incorrect : Chiffre d\'affaire should be equal to TotalAmount' );
 
     }
 }

@@ -13,8 +13,8 @@ global class BatchUpdateAccountCA implements Database.Batchable<sObject>{
       for(Account accountUpdate : accounts){
          Decimal accountCA = 0;
          for(Order orders : accountUpdate.orders) {
-            if (orders.NetAmount__c!=null) {
-               accountCA = accountCA + orders.NetAmount__c;
+            if (orders.TotalAmount!=null) {
+               accountCA = accountCA + orders.TotalAmount;
             }
          }
          accountUpdate.Chiffre_d_affaire__c = accountCA;

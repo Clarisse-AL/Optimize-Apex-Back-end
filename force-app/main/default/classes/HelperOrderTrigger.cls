@@ -29,8 +29,8 @@ public with sharing class HelperOrderTrigger {
             
 
             for(Order orders : accountUpdate.orders) {
-                if (orders.NetAmount__c!=null) {
-                    accountCA = accountCA + orders.NetAmount__C;
+                if (orders.TotalAmount!=null) {
+                    accountCA = accountCA + orders.TotalAmount;
                 }
                
             }
